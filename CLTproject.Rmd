@@ -204,7 +204,7 @@ print(paste('mean = ', mean(my1000$k36),' sd = ',sd(my1000$k36)))
 cltSD36 <- sd(my1000$kkardashtemp) / sqrt(numb)
 cltMean36 <- 50
 diffSD36 <- abs(sd(my1000$k36)-cltSD36)
-diffMean36 <- abs(mean(my1000$k4)-cltMean36)
+diffMean36 <- abs(mean(my1000$k36)-cltMean36)
 
 cat("Expected SD for n =", numb, ": ", cltSD36, "\n")
 cat("Expected Mean for n =", numb, ": ", cltMean36, "\n\n")
