@@ -118,3 +118,34 @@ cat("Difference in SD = ", diffSD9, "\n")
 cat("Difference in Mean = ", diffMean9, "\n")
 
 ```
+
+```{r include=TRUE,echo=FALSE}
+numb = 16
+Hdata = Homers_data[sample(1:1000,size=numb*1000, replace=T),"kkardashtemp"]
+mdata  <-matrix(Hdata,nrow=1000,ncol=numb)
+x.avg <- apply(mdata,1,mean)
+my1000$k16 = x.avg
+
+
+p <- ggplot(my1000, aes(x=k16),col=sex) + 
+  geom_density() +
+
+# Add mean line
+ geom_vline(aes(xintercept=mean(k16)),
+            color="blue", linetype="dashed", size=1)
+p + ggtitle("n = 16") +
+  xlab("temperature") + ylab(" density")
+
+print(paste('mean = ', mean(my1000$k16),' sd = ',sd(my1000$k16)))
+
+cltSD16 <- sd(my1000$kkardashtemp) / sqrt(numb)
+cltMean16 <- 50
+diffSD16 <- abs(sd(my1000$k16)-cltSD16)
+diffMean16 <- abs(mean(my1000$k16)-cltMean16)
+
+cat("Expected SD for n =", numb, ": ", cltSD16, "\n")
+cat("Expected Mean for n =", numb, ": ", cltMean16, "\n\n")
+cat("Difference in SD = ", diffSD16, "\n")
+cat("Difference in Mean = ", diffMean16, "\n")
+```
+
